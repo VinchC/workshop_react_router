@@ -1,30 +1,16 @@
-import { useState } from "react";
+import Navbar from "./pages/Navbar";
+import { Outlet } from "react-router-dom";
+import Footer from "./pages/Footer";
 import "./App.css";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Pops from "./pages/Pops";
 
 function App() {
-  const [currentLocation, setCurrentLocation] = useState("/");
-
   return (
     <>
-      <nav>
-        <button onClick={() => setCurrentLocation("/")} type="button">
-          Home
-        </button>
-        <button onClick={() => setCurrentLocation("/about")} type="button">
-          About
-        </button>
-        <button onClick={() => setCurrentLocation("/pops")} type="button">
-          Pops
-        </button>
-      </nav>
+      <Navbar />
       <main>
-        {currentLocation === "/" && <Home />}
-        {currentLocation === "/about" && <About />}
-        {currentLocation === "/pops" && <Pops />}
+        <Outlet />
       </main>
+      <Footer />
     </>
   );
 }
